@@ -21,4 +21,6 @@ constructor(
             ),
             pagingSourceFactory = { MoviePagingSource(movieService = movieService) }
         ).liveData
+
+    suspend fun getMovieDetail(movieId: Int) = movieService.getMovieDetail(movieId = movieId)
 }

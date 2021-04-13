@@ -13,7 +13,6 @@ interface MovieService {
 
     @GET("movie/{movieId}")
     suspend fun getMovieDetail(
-        @Query("api_key") string: String,
         @Path("movieId") movieId: Int
     ): Movie
 }

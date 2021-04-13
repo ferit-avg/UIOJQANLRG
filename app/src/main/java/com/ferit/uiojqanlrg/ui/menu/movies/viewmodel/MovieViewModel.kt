@@ -29,4 +29,15 @@ class MovieViewModel
         }
     }
 
+    fun getMovieDetail(movieId: Int) = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            emit(Resource.success(data = movieRepository.getMovieDetail(movieId = movieId)))
+        } catch (e: KotlinNullPointerException) {
+            emit(Resource.empty(data = null, exception = e))
+        } catch (e: Exception) {
+            emit(Resource.error(data = null, exception = e))
+        }
+    }
+
 }
